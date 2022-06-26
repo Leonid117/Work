@@ -44,6 +44,10 @@ Publish the code on GitHub (by the way, we also look at the quality of git maint
 ```
 https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=15m&limit=100
 ```
+**Parameters:**
+- symbol: BTCUSDT, ETHUSDT, LTCUSDT
+- interval: 15m, 30m, 1h
+- limit: 100, 500, 1500
 
 ### Response:
 ```
@@ -64,10 +68,6 @@ https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=15m&limit=100
   ]
 ]
 ```
-**Parameters:**
-- symbol: BTCUSDT, ETHUSDT, LTCUSDT
-- interval: 15m, 30m, 1h
-- limit: 100, 500, 1500
 
 ![image](https://user-images.githubusercontent.com/29371921/175809851-7bf28f3d-f9be-40b3-9a65-e3ab535849ef.png)
 
