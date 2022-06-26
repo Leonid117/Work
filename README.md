@@ -40,7 +40,7 @@ We want to see the code beautiful and without unnecessary garbage, according to 
 You can take any libraries, but remember that the more code you have, the better.
 Publish the code on GitHub (by the way, we also look at the quality of git maintenance)
 
-### To get an array of candlesticks for a chart API:
+### To get an array of candlesticks for a chart. API:
 ```
 https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=15m&limit=100
 ```
