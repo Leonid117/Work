@@ -13,6 +13,7 @@ Use **UIKIT + SnapKit + StoryBoards** for screen layout
 ### Additional task №1:
 Drawing events on the chart. event is a point on the chart. It is located above the candles.
 For this task, you will need to use **Firebase**. You can choose any format and structs and data set you want for this task.
+
 ![image](https://user-images.githubusercontent.com/29371921/175809836-08f29925-7ade-4e4a-a218-1aae0c377cd2.png)
 
 ### Additional task №2:
