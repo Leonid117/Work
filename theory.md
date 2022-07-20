@@ -1,67 +1,69 @@
 # User interface
-### Что такое Responder Chain?
-Responder Chain — это иерархия объектов, которые могут ответить на полученные события.
+# User interface
+### What is Responder Chain?
+Responder Chain — it is a hierarchy of objects that can respond to received events.
 
-### В чем разница между рамкой и границами (frame и bound)?
-Границы в UIView — это прямоугольник, имеющий местоположение (x, y) и размер (ширина, высота) относительно собственной системы координат (0,0).
-Рамка в UIView это прямоугольник, имеющий местоположение (x, y) и размер (высота, ширина) относительно элемента, в котором он содержится.
-Собеседование разработчика
+### What's the difference beetween frame и bound?
+Bounds refers to the views own coordinate system while Frame refers to the views parent coordinate system.
 
-### Как настроить Live Rendering? И что это такое
-В Xcode 6 и iOS 8 SDK Apple добавила возможность рендеринга кастомных компонентов и редактирования их свойств прямо в стандартном Interface Builder 
-Атрибут @IBDesignable позволяет Interface Builder обновлять конкретные элементы.
-live rendering отличный способ ускорения прототипирования, разработки и отладки кастомных view. Особенно круто, что при live rendering учитываются layout constraints и intrinsic content size вашего view, поэтому autolayout работает по-честному, без констрейнтов-заглушек.
+### What is Live Rendering? And how to set it up?
+In Xcode 6 and iOS 8 SDK, Apple added the ability to render custom components and edit their properties directly in the standard Interface Builder
+The @IBDesignable attribute allows the Interface Builder to update specific elements.
+live rendering is a great way to speed up prototyping, developing and debugging custom views. It is especially good that during live rendering, the layout constraints and intrinsic content size of your view are taken into account, so autolayout works without stub constraints.
 
 # Objective-C
-### Почему мы не используем strong для enum в Objective-C?
-Поскольку enum не являются объектами, мы не указываем здесь strong или weak.
+### Why don't we use strong for enum in Objective-C?
+Because enums are not objects, we don't specify strong or weak here.
 
-### Что такое @synthesize в Objective-C?
-Synthesize генерирует методы getter и setter для вашего свойства.
+### What is @synthesize in Objective-C?
+Synthesize generates getter and setter methods for your property.
 
-### Что такое @dynamic в Objective-C?
-Мы используем dynamic для подклассов NSManagedObject. @dynamic сообщает компилятору, что геттер и сеттеры реализованы где-то в другом месте.
+### What is @dynamic in Objective-C?
+@dynamic just tells the compiler that the getter and setter methods are implemented not by the class itself but somewhere else (like the superclass or will be provided at runtime)
 
-> Примените этот модификатор к любому члену класса, который может быть представлен Objective-C. Когда вы отмечаете объявление члена модификатором dynamic, доступ к этому члену всегда динамически отправляется во время выполнения Objective-C. Доступ к этому члену никогда не встраивается или девиртуализуется компилятором.
-> Поскольку объявления, отмеченные модификатором dynamic, отправляются во время выполнения Objective-C, они неявно отмечаются атрибутом objc.
+### What is dynamic dispatch?
+Dynamic Dispatch is the process of selecting the implementation of a polymorphic operation, which is a method or function to call at run time. This happens when we want to call our methods as a method on an object. Swift doesn't do Dynamic Dispatch by default.
 
-### Что такое Dynamic Dispatch?
-Dynamic Dispatch — это процесс выбора реализации полиморфной операции, которая является методом или функцией для вызова во время выполнения. Это происходит, когда мы хотим вызывать наши методы как метод объекта. Swift по умолчанию не выполняет Dynamic Dispatch.
+#### Dynamic Dispatch
+Messaging is the power of Objective-C and the Objective-C runtime. Each message is sent dynamically. What does it mean? The Objective-C runtime shows you which method to call for a message at run time by checking the class hierarchy. This is why Objective-C is such a dynamic language. The dynamism of Objective-C is also the ability of several Cocoa features, including Key-Value Observing, as well as the behavior model.
+There is one major drawback to dynamic dispatch. Because the runtime must determine which method to call on a message, dynamic dispatch is slower than static dispatch. In other words, dynamic dispatch comes with a small overhead.
 
-#### Динамическая отправка/Dynamic Dispatch
-Рассылка сообщений — это полномочия Objective-C и среды выполнения Objective-C. Каждое отправленное сообщение отправляется динамически. Что это значит? Среда выполнения Objective-C показывает, какой метод вызывать для сообщения во время выполнения, проверяя иерархию классов. Вот почему Objective-C — такой динамичный язык. Динамичность Objective-C — это также способность нескольких функций Cocoa, включая Key-Value Observing, так и модель поведения.
-Для динамической отправки есть один важный недостаток. Поскольку среда выполнения должна определить, какой метод вызывать для сообщения, динамическая отправка сама по себе медленна по сравнению с прямой отправкой. Другими словами, динамическая отправка идет с небольшими накладными расходами.
+#### Static Dispatch
+The compiler can determine at compile time which method to call on a message. As the name suggests, this is not a dynamic send. What is lost in flexibility and dynamism is gained in performance.
+The runtime does not need to determine which method to call at run time. The little performance associated with dynamic dispatch is simply not there when using direct dispatch.
 
-#### Статическая отправка/Static Dispatch
-Статическая отправка, также известная как прямая отправка, но при этом имеет собственные отличия. Компилятор может определить во время компиляции, какой метод следует вызывать для сообщения. Как уже следует из названия, это не динамичная отправка. То, что потеряно в гибкости и динамизме, достигается в производительности.
-Исполняемой среде не нужно определять, какой метод вызывать во время выполнения. Небольшая производительность, связанная с динамической отправкой, просто отсутствует при использовании прямой отправки.
+# Simple Questions
 
-# Простые вопросы
+### What's difference between strong, weak, read only и copy?
+The property attributes strong, weak, assign determine how the memory for this property will be managed.
 
-### В чем разница strong, weak, read only и copy?
-Атрибуты свойства strong, weak, assign определяют, как будет управляться память для этого свойства.
+Strong : Through the life of the object, the reference count will be increased and the reference will be maintained
 
-- Strong означает, что в сгенерированном сеттере счетчик ссылок на присваиваемый объект будет увеличен и ссылка на него будет поддерживаться в течение жизни объекта.
-- Weak означает, что мы указываем на объект, но не увеличиваем счетчик ссылок. Он часто используется при создании родительских-дочерних отношений. Родитель имеет сильную ссылку на ребенка, но ребенок имеет только слабую ссылку на родителя.
-- Read only —  мы можем установить свойство изначально, но затем его нельзя будет изменить.
-- Copy означает, что мы копируем значение объекта при его создании. Также предотвращает изменение его значения.
+Weak : It can be said as a non-strong reference that means it refers to the fact that we are referring to an object but not adding to its reference count. It’s often used to establish a parent-child relationship. The parent has a strong connection with the infant, but the child has only a small connection with the parent.
 
-### Что такое обработчик завершения (completion closure) ?
-- Обработчики завершения очень удобны, когда наше приложение вызывает API, и нам нужно что-то сделать, когда эта задача будет выполнена: например, обновить пользовательский интерфейс, чтобы отобразить данные из вызова API. Обработчики завершения можно найти в API Apple, например, dataTaskWithRequest, и они могут быть очень полезными в вашем коде.
-- Обработчик завершения принимает код с тремя аргументами: (NSData?, NSURLResponse?, NSError?), который ничего не возвращает: void. Это означает завершение.
-- Обработчики завершения должны быть помечены @escaping, так как они выполняются после выполнения функции.
+Read-only : Initially, The property will be set and it can’t be changed.
 
-### Что такое объект NSError?
-Существует три части объекта NSError: домен, код ошибки и словарь с пользовательской информацией. Домен — это строка, которая идентифицирует, к какой категории относится эта ошибка.
+Copy : It means that when an object is created, we’re copying its value. Also prevents its value from changing.
 
-### Что такое регулярные выражения?
-Регулярные выражения — это специальные строки-шаблоны, которые описывают, как искать в строке.
+### What is completion closure?
+Closures are self-contained blocks of functionality that can be passed around and used in your code.
 
-### Что такое перегрузка операторов?
-Классы и структуры могут предоставлять свои собственные реализации существующих операторов. Действие переопределения оператора известно как перегрузка существующего оператора.
+- completion closure come in very handy when our application calls an API and we need to do something when that task is done, such as updating the UI to display the data from the API call. Completion closure can be found in Apple APIs like dataTaskWithRequest and can be very useful in your code.
+- The completion closure takes a code with three arguments: (NSData?, NSURLResponse?, NSError?), which returns nothing: void. It means completion.
+- Completion closure should be marked with @escaping as they are executed after the function is executed.
 
-Пример ниже отображает как можно реализовать арифметический оператор сложения (+) для пользовательской структуры. Арифметический оператор сложения является бинарным оператором, потому что он оперирует с двумя операндами, то есть он является инфиксным, потому как вставляется между двумя операндами.
-Пример определяет структуру Vector2D для двухмерного вектора положения (x, y), за которой идет статическая функция, которая добавляет друг к другу экземпляры структуры Vector2D:
+### What is NSError?
+Information about an error condition including a domain, a domain-specific error code, and application-specific information.
+There are three parts to an NSError object: the domain, the error code, and a dictionary of user information. The domain is a string that identifies which category the error belongs to.
+
+### What is RegExp?
+Regular expressions are special pattern strings that describe how to search within a string.
+
+### What is operator overloading?
+Operator overloading allows you to change the way existing operators work with specific structures or classes. This is exactly what you need – you’d like to change the way the + operator works with Int arrays!
+
+
+The example below shows how the addition (+) arithmetic operator can be implemented for a custom structure.
 
 ```
 struct Vector2D {
@@ -75,28 +77,30 @@ extension Vector2D {
 }
 ```
 
+### What is the difference between synchronous and asynchronous task?
+Synchronous: waits for the task to complete. Asynchronous: Finishes a task in the background and notifies you when it's completed.
 
-### Чем отличаются синхронная и асинхронная задача?
-Синхронная: ждет, пока задача завершится. Асинхронная: завершает задачу в фоновом режиме и уведомляет вас о завершении.
+### Why do we use synchronized?
+Synchronized ensures that only one thread can execute this code in a block at any given time.
 
-### Почему мы используем synchronized?
-Synchronized гарантирует, что только один поток может выполнять этот код в блоке в любой момент времени.
+### What is Enum?
+In Swift, an enum (short for enumeration) is a user-defined data type that has a fixed set of related values. We use the enum keyword to create an enum. For example, enum Season { case spring, summer, autumn, winter } Here, Season - name of the enum.
 
-### Что такое Enum?
-Enum — это тип, который в основном содержит группу связанных значений.
-Перечисления определяют общий тип для группы ассоциативных значений и позволяют работать с этими значениями в типобезопасном режиме в вашем коде.
-> В отличии от C и Objective-C в Swift кейсам перечисления не присваиваются целочисленные значения по умолчанию при их создании. В примере выше CompassPoint, значения членов north, south, east и west неявно не равны 0, 1, 2, 3. Вместо этого различные члены перечисления по праву полностью самостоятельны, с явно объявленным типом CompassPoint.
+# Difficult Questions 
 
-# Сложные вопросы
+### What is b-trees?
+These are search trees that provide an ordered store of key values with excellent performance characteristics. Each node keeps a sorted array of its own elements and another array for its children.
+https://en.wikipedia.org/wiki/B-tree
 
-### Что такое b-деревья?
-Это поисковые деревья, которые предоставляют упорядоченное хранилище ключевых значений с отличными характеристиками производительности. Каждый узел хранит отсортированный массив своих собственных элементов и другой массив для своих дочерних элементов.
-https://ru.wikipedia.org/wiki/B-дерево
+### What is TVMLKit?
+TVMLKit — it is the link between TVML, JavaScript and native tvOS app.
 
-### Что такое TVMLKit?
-TVMLKit — это связь между TVML, JavaScript и нативным tvOS-приложением.
+### What are the limitations of the platform tvOS?
+First, tvOS does not support browsers and therefore you will not be able to use WebKit or any other web rendering engine. This means that your application will not be able to reference the web browser at all, including web links, OAuth, or social networking sites.
+Second, tvOS apps cannot explicitly use local storage. Devices are shipped with either a 32 GB or 64 GB hard drive when the product is launched, but applications are not allowed to directly save files to the device.
+A tvOS app bundle cannot exceed 4 GB.
 
-### Какие ограничения существуют у платформы tvOS?
-Во-первых, tvOS не поддерживает браузеры, и поэтому вы не сможете использовать WebKit или другой веб-механизм рендеринга. Это означает, что ваше приложение совсем не сможет ссылаться на веб-браузер, включая веб-ссылки, OAuth или сайты социальных сетей.
-Во-вторых, приложения tvOS не могут явно использовать локальное хранилище. При запуске продукта устройства поставляются с жестким диском либо на 32 ГБ, либо на 64 ГБ, но приложениям не разрешается напрямую сохранять файлы на устройство.
-Бандл tvOS-приложения  не может превышать 4 ГБ.
+
+
+
+
