@@ -3,7 +3,7 @@
 ### Main task:
 Your task is to create a UI element that can draw price charts
 The chart can be scrolled left and right, and the candles should shrink and expand relative to the frame in which they are contained.
-Use **UIKIT + SnapKit + StoryBoards** for screen layout
+Use **UIKIT + StoryBoards** for screen layout. Don't use any library for it.
 
 You can decompose this task into smaller ones, for example:
 - Creating a web layer.
