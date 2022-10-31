@@ -14,7 +14,7 @@ You can decompose this task into smaller ones, for example:
 
 If you have difficulties with any item, skip it and specify it in README.md what difficulties do you have with this and what possible solutions there may be.
 
-### Use Design [Figma](https://www.figma.com/file/uVCfFE9Jylx3UteucIbH8i/Candlestick-Chart-Test?node-id=408%3A123).
+### Use Design [Figma](https://www.figma.com/file/AOd1743gavZ8DWQcB0Wyqo/Candlestick-Chart-Test-(Copy)?node-id=0%3A1).
 
 ![image](https://user-images.githubusercontent.com/29371921/175809761-263f4fc7-e918-4884-9ba6-5debb4a7b72d.png)
 
